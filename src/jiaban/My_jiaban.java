@@ -27,8 +27,8 @@ public class My_jiaban {
 		driver.manage().window().maximize();			// 浏览器最大化
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS); 		// 设置等待时间 8S， 如果8s内没有找到相应的元素会报错
 		selenium.open("http://10.1.32.21:8082/login/Login.jsp?logintype=1");	// 进入OA
-		selenium.type("id=loginid", "wanglei03");			// 输入用户名
-		selenium.type("id=userpassword", "WANGlei!");		// 输入密码
+		selenium.type("id=loginid", "修改成你的");			// 输入用户名
+		selenium.type("id=userpassword", "修改成你的");		// 输入密码
 		selenium.submit("id=form1");						// 点击登录按钮
 		
 		//************************************* 下面进入OA主页了   *************************************//

@@ -22,8 +22,8 @@ public class Jiaban {
 	@Test
 	public void testJiaban() throws Exception {
 		selenium.open("http://10.1.32.21:8082/login/Login.jsp?logintype=1");
-		selenium.type("id=loginid", "wanglei03");
-		selenium.type("id=userpassword", "WANGlei!");
+		selenium.type("id=loginid", "这里输入你的");    
+		selenium.type("id=userpassword", "这里输入你的");
 		selenium.submit("id=form1");
 		Thread.sleep(3000);
 		selenium.click("id=tz");
