@@ -2,7 +2,7 @@
 #### @author 王 磊
 ## 使用方法
 ### 1.把该项目下载到本地   2.把Chromedriver路径添加到环境变量(如果是Firefox同理)  3.eclipse导入项目   4.源码在.\src\jiaban里，分周内和周末版，用户要修改的地方是自己用户名和密码
-###![image](https://github.com/397179459/Java-selenium_jiaban/blob/master/gif/jiaban.gif)
+![image](https://github.com/397179459/Java-selenium_jiaban/blob/master/gif/jiaban.gif)
 #### PS：
 #### 其实这份代码，是为了解放你的双手，特别是加班人数特别多的时候，速度主要取决于你的网速和电脑；如果加班人数小于5人时，速度绝对给力
 #### 可能速度没有你手动那么熟练，但是程序运行后就不用管了，最小化就行了，再去干其他的事情
