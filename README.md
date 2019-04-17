@@ -1,6 +1,7 @@
 # Java-selenium_jiaban
 #### @author 王 磊
 ## 使用方法
+#### 19/4/17更新：新增提指定日期的加班，代码在./src/jiaban/Jiaban_OP.java
 ### 1.把该项目下载到本地   2.把Chromedriver路径添加到环境变量(如果是Firefox同理)  3.eclipse导入项目   4.源码在.\src\jiaban里，分周内和周末版，用户要修改的地方是自己用户名和密码
 ![image](https://github.com/397179459/Java-selenium_jiaban/blob/master/gif/jiaban.gif)
 #### PS：
