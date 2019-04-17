@@ -2,7 +2,11 @@
 #### @author 王 磊
 ## 使用方法
 #### 19/4/17更新：新增提指定日期的加班，代码在./src/jiaban/Jiaban_OP.java
-#### tips:1.chrome驱动可以直接放到eclipse安装目录下，不用配置环境变量；或者在main函数里加一句"System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");" 后面是你的文件位置
+#### tips:1.chrome驱动可以直接放到eclipse安装目录下，不用配置环境变量；或者在main函数里加一句
+```
+"System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");" 
+```
+后面是你的文件位置
 ### 1.把该项目下载到本地   2.把Chromedriver路径添加到环境变量(如果是Firefox同理)  3.eclipse导入项目   4.源码在.\src\jiaban里，分周内和周末版，用户要修改的地方是自己用户名和密码
 ![image](https://github.com/397179459/Java-selenium_jiaban/blob/master/gif/jiaban.gif)
 #### PS：
