@@ -2,6 +2,7 @@
 #### @author 王 磊
 ## 使用方法
 #### 19/4/17更新：新增提指定日期的加班，代码在./src/jiaban/Jiaban_OP.java
+#### 19/5/10更新：新增选择 转当月调休 功能；记得查看chrome版本和插件；修改了进入加班的链接，以前开头是(新)，现在没有了
 #### tips:1.chrome驱动可以直接放到eclipse安装目录下，不用配置环境变量；或者在main函数里加一句
 ```
 "System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");" 
