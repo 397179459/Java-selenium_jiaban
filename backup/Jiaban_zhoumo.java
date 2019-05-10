@@ -28,13 +28,13 @@ public class Jiaban_zhoumo {
 		driver.manage().window().maximize();			// 浏览器最大化
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS); 		// 设置等待时间 8S， 如果8s内没有找到相应的元素会报错
 		selenium.open("http://10.1.32.21:8082/login/Login.jsp?logintype=1");	// 进入OA
-		selenium.type("id=loginid", "wanglei03");			// 输入用户名
-		selenium.type("id=userpassword", "WANGlei!");		// 输入密码
+		selenium.type("id=loginid", "你的");			// 输入用户名
+		selenium.type("id=userpassword", "你的!");		// 输入密码
 		selenium.submit("id=form1");						// 点击登录按钮
 		
 		//************************************* 下面进入OA主页了   *************************************//
 		selenium.click("id=tz");
-		selenium.click("link=（新）HR-012-A-加班申请流程-间接员工-K-VXG");
+		selenium.click("link=HR-012-A-加班申请流程-间接员工-K-VXG");
 		
 		//************************************* 下面进入加班界面了  *************************************//
 		Set<String> winHandels = driver.getWindowHandles();     // 得到当前窗口的set集合
@@ -51,10 +51,10 @@ public class Jiaban_zhoumo {
 	    //************************************* 下面开始提加班了  *************************************//
 		// 提加班一条一条提，分别对应每个时段都设置循环次数，用户要修改的是对应时段的加班人数
 		int x = 0;
-		int x817 = 3;	// 8:00 - 17:30
+		int x817 = 1;	// 8:00 - 17:30
 		int x85 = 5;	// 8:30 - 17:30
-		int x821 = 3;	// 8:30 - 21:00
-		int x18 = 2;	// 18:00 - 21:00  周末白班的人
+		int x821 = 4;	// 8:30 - 21:00
+		int x18 = 0;	// 18:00 - 21:00  周末白班的人
 
 		// 如果不是提当天的，要把日期那天都换成这个语句，td[15]就是14号，实验得知好像是数字减一天，就是你要选择的日期
 		// selenium.click("xpath=(.//*[normalize-space(text()) and normalize-space(.)='六'])[1]/following::td[15]");
@@ -73,6 +73,9 @@ public class Jiaban_zhoumo {
 		    driver.switchTo().frame(frame);
 			selenium.click("id=dpTodayInput");			// 今天
 			driver.switchTo().parentFrame();
+			// 19/5/10 新增要选择是转当月调休还是年度调休
+			selenium.click("id=field46113_"+x);
+			selenium.select("id=field46113_"+x, "label=转当月调休");
 			// 预计开始日期
 			selenium.click("id="+str1);
 		    driver.switchTo().frame(frame);
@@ -114,6 +117,9 @@ public class Jiaban_zhoumo {
 		    driver.switchTo().frame(frame);
 			selenium.click("id=dpTodayInput");			// 今天
 			driver.switchTo().parentFrame();
+			// 19/5/10 新增要选择是转当月调休还是年度调休
+			selenium.click("id=field46113_"+x);
+			selenium.select("id=field46113_"+x, "label=转当月调休");
 			// 预计开始日期
 			selenium.click("id="+str1);
 		    driver.switchTo().frame(frame);
@@ -155,6 +161,9 @@ public class Jiaban_zhoumo {
 		    driver.switchTo().frame(frame);
 			selenium.click("id=dpTodayInput");			// 今天
 			driver.switchTo().parentFrame();
+			// 19/5/10 新增要选择是转当月调休还是年度调休
+			selenium.click("id=field46113_"+x);
+			selenium.select("id=field46113_"+x, "label=转当月调休");
 			// 预计开始日期
 			selenium.click("id="+str1);
 		    driver.switchTo().frame(frame);
@@ -196,6 +205,9 @@ public class Jiaban_zhoumo {
 		    driver.switchTo().frame(frame);
 			selenium.click("id=dpTodayInput");			// 今天
 			driver.switchTo().parentFrame();
+			// 19/5/10 新增要选择是转当月调休还是年度调休
+			selenium.click("id=field46113_"+x);
+			selenium.select("id=field46113_"+x, "label=转当月调休");
 			// 预计开始日期
 			selenium.click("id="+str1);
 		    driver.switchTo().frame(frame);
