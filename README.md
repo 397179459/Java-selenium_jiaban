@@ -1,21 +1,23 @@
 # Java_selenium_jiaban
 ![](https://img.shields.io/badge/Fast-High%20Efficiency-success.svg)&emsp;![](https://img.shields.io/badge/author-%E7%8E%8B%20%E7%A3%8A-red.svg)&emsp;![](https://img.shields.io/github/commit-activity/y/397179459/Java-selenium_jiaban.svg)&emsp;![](https://img.shields.io/github/languages/top/397179459/Java-selenium_jiaban.svg?color=red)
 ### Change Log
-* 19/4/17更新：新增提指定日期的加班，代码在./src/jiaban/Jiaban_OP.java
-* 19/5/10更新：新增选择 转当月调休 功能；记得查看chrome版本和插件；修改了进入加班的链接，以前开头是(新)，现在没有了
+* 19/6/10 代码重构，定义了一个func代替循环体，以后的修改维护也更简单一点。删除了Jiaban_OP,因为日期问题不好解决，每个月的日期差都不固定。因为OA一直在变化，有些小的地方一直在变动，比如登录按钮的ID也规范(login)了，还有上次的字符(新)去掉了
+* 19/5/10 新增选择 转当月调休 功能；**记得查看chrome版本和插件**；修改了进入加班的链接，以前开头是(新)，现在没有了
+* 19/4/17 新增提指定日期的加班，代码在./src/jiaban/Jiaban_OP.java。
+
 -----
 ![](https://github.com/397179459/Java-selenium_jiaban/blob/master/gif/jiaban.gif)
 ### 使用方法
-chrome驱动可以直接放到eclipse安装目录下，不用配置环境变量；或者在main函数里加一句,后面是你的文件位置:
-```
-"System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");" 
-```
 
 1. 把该项目下载到本地
 2. 把Chromedriver路径添加到环境变量(如果是Firefox同理) 
+	chrome驱动可以直接放到eclipse安装目录下，不用配置环境变量；或者在main函数里加一句,后面是你的文件位置:
+	```
+	"System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe");" 
+	```
 3. eclipse导入项目   
 4. 源码在.\src\jiaban里，分周内和周末版，用户要修改的地方是自己用户名和密码
-5. 启动运行就OK了，如果报错的话，一般都是chrome driver的版本问题
+5. 启动运行就OK了，如果报错的话，**一般都是chrome driver的版本问题**
 -----
 #### Tips：
 * 其实这份代码，是为了解放你的双手，特别是加班人数特别多的时候，速度主要取决于你的网速和电脑；如果加班人数小于5人时，速度绝对给力
