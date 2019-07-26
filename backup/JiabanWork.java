@@ -30,6 +30,7 @@ public class JiabanWork {
     WebElement frame=driver.findElement(By.xpath("//*[@id=\"_my97DP\"]/iframe"));
     WebElement frameH=driver.findElement(By.xpath("//*[@id=\"meizzDateLayer2\"]"));
     
+    
     public void jiabantime(String starthour,String startmin,String endhour,String endmin) {
 		String str0 = String.format("field46112_%sbrowser", x);		// 归属日期
 		String str1 = String.format("field46125_%sbrowser", x);		// 预计开始日期
@@ -74,6 +75,7 @@ public class JiabanWork {
 		driver.switchTo().parentFrame();
 		x++;
 	}
+    
 	
 	public static void main(String[] args) throws InterruptedException {
 
@@ -82,14 +84,14 @@ public class JiabanWork {
 		driver.manage().window().maximize();			// 浏览器最大化
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS); 		// 设置等待时间 8S， 如果8s内没有找到相应的元素会报错
 		selenium.open("http://10.1.32.21:8082/login/Login.jsp?logintype=1");	// 进入OA
-		selenium.type("id=loginid", "这里输入你的用户名");			// 输入用户名
-		selenium.type("id=userpassword", "这里输入你的密码");		// 输入密码
+		selenium.type("id=loginid", "wanglei03");			// 输入用户名
+		selenium.type("id=userpassword", "wangLEI!");		// 输入密码
 		selenium.submit("id=login");						// 点击登录按钮
 		
 		//************************************* 下面进入OA主页了  ****************************************************************//
 		
 		selenium.click("id=tz");
-		selenium.click("link=HR-012-A-加班申请流程-间接员工-K-VXG");  //这里要跟实际UI上面的文字对应即可，之前开头有个(新)
+		selenium.click("link=HR-012-B-加班申请流程-间接员工-K-HVT");  //这里要跟实际UI上面的文字对应即可，之前开头有个(新)
 		
 		//************************************* 下面进入加班界面了  *************************************//
 		Set<String> winHandels = driver.getWindowHandles();     // 得到当前窗口的set集合
@@ -99,23 +101,20 @@ public class JiabanWork {
 	    selenium.selectFrame("index=2");
 
 	    // 加班事由，自行修改
-		selenium.type("id=field46107", "值班对应异常，INDEX PM，沉降测试");
+		selenium.type("id=field46107", "查看资料");
 		
 	    //************************************* 下面开始提加班了  *************************************//
 		// 提加班一条一条提，分别对应每个时段都设置循环次数，用户要修改的是对应时段的加班人数
 
-		int x78 = 1;	// 7:30 - 8:30
-		int x7 = 1;		// 18:00 - 19:00
-		int x75 = 2;	// 18:00 - 19:30
-		int x8 = 1;		// 18:00 - 20:00
-		int x85 = 1;	// 18:00 - 20:30
-		int x9 = 3;		// 18:00 - 21:00
+		int x78 = 0;	// 7:30 - 8:30
+		int x7 = 0;		// 18:00 - 19:00
+		int x75 = 3;	// 18:00 - 19:30
+		int x8 = 0;		// 18:00 - 20:00
+		int x85 = 0;	// 18:00 - 20:30
+		int x9 = 0;		// 18:00 - 21:00
 		int x95 = 0;	// 18:00 - 21:30
 		int x10 = 0;	// 18:00 - 22:00
 
-		// 如果不是提当天的，要把日期那天都换成这个语句，td[15]就是14号，实验得知好像是数字减一天，就是你要选择的日期
-		// selenium.click("xpath=(.//*[normalize-space(text()) and normalize-space(.)='六'])[1]/following::td[15]");
-		
 		//************************************* 以下是各个时间段的循环  *************************************//
 		
 	    JiabanWork jiabanWork = new JiabanWork();

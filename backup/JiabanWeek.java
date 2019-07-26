@@ -76,20 +76,21 @@ public class JiabanWeek {
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
-
+		
+		
 		String baseUrl = "https://www.katalon.com/";
 		selenium = new WebDriverBackedSelenium(driver, baseUrl);
 		driver.manage().window().maximize();			// 浏览器最大化
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS); 		// 设置等待时间 8S， 如果8s内没有找到相应的元素会报错
 		selenium.open("http://10.1.32.21:8082/login/Login.jsp?logintype=1");	// 进入OA
-		selenium.type("id=loginid", "这里输入你的用户名");			// 输入用户名
-		selenium.type("id=userpassword", "这里输入你的密码");		// 输入密码
+		selenium.type("id=loginid", "wanglei03");			// 输入用户名
+		selenium.type("id=userpassword", "wangLEI!");		// 输入密码
 		selenium.submit("id=login");						// 点击登录按钮
 		
 		//************************************* 下面进入OA主页了  ****************************************************************//
 		
 		selenium.click("id=tz");
-		selenium.click("link=HR-012-A-加班申请流程-间接员工-K-VXG");  //这里要跟实际UI上面的文字对应即可，之前开头有个(新)
+		selenium.click("link=HR-012-B-加班申请流程-间接员工-K-HVT");  //这里要跟实际UI上面的文字对应即可，之前开头有个(新)
 		
 		//************************************* 下面进入加班界面了  *************************************//
 		Set<String> winHandels = driver.getWindowHandles();     // 得到当前窗口的set集合
@@ -99,18 +100,15 @@ public class JiabanWeek {
 	    selenium.selectFrame("index=2");
 
 	    // 加班事由，自行修改
-		selenium.type("id=field46107", "值班对应异常，INDEX PM，沉降测试");
+		selenium.type("id=field46107", "查看资料");
 		
 	    //************************************* 下面开始提加班了  *************************************//
 		// 提加班一条一条提，分别对应每个时段都设置循环次数，用户要修改的是对应时段的加班人数
 
-		int x817 = 2;	// 8:00 - 17:30
-		int x85 = 2;	// 8:30 - 17:30
-		int x821 = 3;	// 8:30 - 21:00
-		int x18 = 2;	// 18:00 - 21:00  周末白班的人
-
-		// 如果不是提当天的，要把日期那天都换成这个语句，td[15]就是14号，实验得知好像是数字减一天，就是你要选择的日期
-		// selenium.click("xpath=(.//*[normalize-space(text()) and normalize-space(.)='六'])[1]/following::td[15]");
+		int x817 = 0;	// 8:00 - 17:30
+		int x85 = 1;	// 8:30 - 17:30
+		int x821 = 0;	// 8:30 - 21:00
+		int x18 = 0;	// 18:00 - 21:00  周末白班的人
 		
 		//************************************* 以下是各个时间段的循环  *************************************//
 		
