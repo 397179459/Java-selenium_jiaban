@@ -22,7 +22,7 @@ import com.thoughtworks.selenium.webdriven.WebDriverBackedSelenium;
  * 如果提示chromedrive有问题，那就是你的浏览器更新了，插件也随之改变，去下载和你chrome版本对应的即可
  */
 
-public class JiabanWeek {
+public class JiabanWeek2 {
 	private static Selenium selenium;
 	int x = 0;
 	static WebDriver driver =new ChromeDriver();
@@ -31,6 +31,10 @@ public class JiabanWeek {
     WebElement frameH=driver.findElement(By.xpath("//*[@id=\"meizzDateLayer2\"]"));
     
     public void jiabantime(String starthour,String startmin,String endhour,String endmin) {
+    	
+    	String month = "8";
+    	String day = "18";
+    	
 		String str0 = String.format("field46112_%sbrowser", x);		// 归属日期
 		String str1 = String.format("field46125_%sbrowser", x);		// 预计开始日期
 		String str2 = String.format("field46127_%sbrowser", x);		// 预计开始时间
@@ -40,7 +44,7 @@ public class JiabanWeek {
 		// 归属日期
 	    selenium.click("id="+str0);
 	    driver.switchTo().frame(frame);
-		selenium.click("id=dpTodayInput");			// 今天
+		selenium.click("//td[@onclick='day_Click(2019," + month + "," + day + ");']");			// 今天
 		driver.switchTo().parentFrame();
 		// 19/5/10 新增要选择是转当月调休还是年度调休
 		selenium.click("id=field46113_"+x);
@@ -49,7 +53,7 @@ public class JiabanWeek {
 		// 预计开始日期
 		selenium.click("id="+str1);
 	    driver.switchTo().frame(frame);
-		selenium.click("id=dpTodayInput");			// 今天
+		selenium.click("//td[@onclick='day_Click(2019," + month + "," + day + ");']");			// 今天
 		driver.switchTo().parentFrame();
 		// 预计开始时间
 		selenium.click("id="+str2);
@@ -62,7 +66,7 @@ public class JiabanWeek {
 		// 预计结束日期
 		selenium.click("id="+str3);
 	    driver.switchTo().frame(frame);
-		selenium.click("id=dpTodayInput");			// 今天
+		selenium.click("//td[@onclick='day_Click(2019," + month + "," + day + ");']");			// 今天
 		driver.switchTo().parentFrame();
 		// 预计结束时间
 		selenium.click("id="+str4);
@@ -83,14 +87,15 @@ public class JiabanWeek {
 		driver.manage().window().maximize();			// 浏览器最大化
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS); 		// 设置等待时间 8S， 如果8s内没有找到相应的元素会报错
 		selenium.open("http://10.1.32.21:8082/login/Login.jsp?logintype=1");	// 进入OA
-		selenium.type("id=loginid", "用户名");			// 输入用户名
-		selenium.type("id=userpassword", "密码");		// 输入密码
+		selenium.type("id=loginid", "改成自己的");			// 输入用户名
+		selenium.type("id=userpassword", "改成自己的!");		// 输入密码
 		selenium.submit("id=login");						// 点击登录按钮
 		
 		//************************************* 下面进入OA主页了  ****************************************************************//
 		
 		selenium.click("id=tz");
-		selenium.click("link=HR-012-B-加班申请流程-间接员工-K-HVT");  //这里要跟实际UI上面的文字对应即可，之前开头有个(新)
+		selenium.click("//*[@id=\"wfcentercontent\"]/ul/li[1]/a");  // 用xpath定位，只要HTML结构不变化，文字修改不影响
+//		selenium.click("link=HR-012-B-加班申请流程（非生产序列）-K-HVT");  //这里要跟实际UI上面的文字对应即可，之前开头有个(新)
 		
 		//************************************* 下面进入加班界面了  *************************************//
 		Set<String> winHandels = driver.getWindowHandles();     // 得到当前窗口的set集合
@@ -100,19 +105,19 @@ public class JiabanWeek {
 	    selenium.selectFrame("index=2");
 
 	    // 加班事由，自行修改
-		selenium.type("id=field46107", "查看资料");
+		selenium.type("id=field46107", "整理资料，写报告");
 		
 	    //************************************* 下面开始提加班了  *************************************//
 		// 提加班一条一条提，分别对应每个时段都设置循环次数，用户要修改的是对应时段的加班人数
 
 		int x817 = 0;	// 8:00 - 17:30
-		int x85 = 1;	// 8:30 - 17:30
+		int x85 = 13;	// 8:30 - 17:30
 		int x821 = 0;	// 8:30 - 21:00
 		int x18 = 0;	// 18:00 - 21:00  周末白班的人
 		
 		//************************************* 以下是各个时间段的循环  *************************************//
 		
-	    JiabanWeek jiabanWork = new JiabanWeek();
+	    JiabanWeek2 jiabanWork = new JiabanWeek2();
 		
 		// 7:30 - 8:30
 		for(int i=0;i<x817;i++) {

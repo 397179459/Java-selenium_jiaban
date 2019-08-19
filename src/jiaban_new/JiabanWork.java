@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import com.thoughtworks.selenium.Selenium;
 import com.thoughtworks.selenium.webdriven.WebDriverBackedSelenium;
 
@@ -84,15 +83,15 @@ public class JiabanWork {
 		driver.manage().window().maximize();			// 浏览器最大化
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS); 		// 设置等待时间 8S， 如果8s内没有找到相应的元素会报错
 		selenium.open("http://10.1.32.21:8082/login/Login.jsp?logintype=1");	// 进入OA
-		selenium.type("id=loginid", "用户名");			// 输入用户名
-		selenium.type("id=userpassword", "密码");		// 输入密码
+		selenium.type("id=loginid", "改成自己的");			// 输入用户名
+		selenium.type("id=userpassword", "改成自己的!");		// 输入密码
 		selenium.submit("id=login");						// 点击登录按钮
 		
 		//************************************* 下面进入OA主页了  ****************************************************************//
 		
 		selenium.click("id=tz");
-		selenium.click("link=HR-012-B-加班申请流程-间接员工-K-HVT");  //这里要跟实际UI上面的文字对应即可，之前开头有个(新)
-		
+		selenium.click("//*[@id=\"wfcentercontent\"]/ul/li[1]/a");  // 用xpath定位，只要HTML结构不变化，文字修改不影响
+
 		//************************************* 下面进入加班界面了  *************************************//
 		Set<String> winHandels = driver.getWindowHandles();     // 得到当前窗口的set集合
 	    List<String> it = new ArrayList<String>(winHandels);    // 将set集合存入list对象
@@ -108,7 +107,7 @@ public class JiabanWork {
 
 		int x78 = 0;	// 7:30 - 8:30
 		int x7 = 0;		// 18:00 - 19:00
-		int x75 = 3;	// 18:00 - 19:30
+		int x75 = 1;	// 18:00 - 19:30
 		int x8 = 0;		// 18:00 - 20:00
 		int x85 = 0;	// 18:00 - 20:30
 		int x9 = 0;		// 18:00 - 21:00

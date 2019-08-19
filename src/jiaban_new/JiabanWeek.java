@@ -22,7 +22,7 @@ import com.thoughtworks.selenium.webdriven.WebDriverBackedSelenium;
  * 如果提示chromedrive有问题，那就是你的浏览器更新了，插件也随之改变，去下载和你chrome版本对应的即可
  */
 
-public class JiabanWork2 {
+public class JiabanWeek {
 	private static Selenium selenium;
 	int x = 0;
 	static WebDriver driver =new ChromeDriver();
@@ -30,12 +30,8 @@ public class JiabanWork2 {
     WebElement frame=driver.findElement(By.xpath("//*[@id=\"_my97DP\"]/iframe"));
     WebElement frameH=driver.findElement(By.xpath("//*[@id=\"meizzDateLayer2\"]"));
     
-    
     public void jiabantime(String starthour,String startmin,String endhour,String endmin) {
-
-    	String day = "23";   //提指定日期的加班就在这个地方改日期，一般都是提当月的加班，所以只对日期做了选择
-    	
-    	String str0 = String.format("field46112_%sbrowser", x);		// 归属日期
+		String str0 = String.format("field46112_%sbrowser", x);		// 归属日期
 		String str1 = String.format("field46125_%sbrowser", x);		// 预计开始日期
 		String str2 = String.format("field46127_%sbrowser", x);		// 预计开始时间
 		String str3 = String.format("field46126_%sbrowser", x);		// 预计结束日期
@@ -44,7 +40,7 @@ public class JiabanWork2 {
 		// 归属日期
 	    selenium.click("id="+str0);
 	    driver.switchTo().frame(frame);
-	    selenium.click("//td[@onclick='day_Click(2019,7," + day + ");']");
+		selenium.click("id=dpTodayInput");			// 今天
 		driver.switchTo().parentFrame();
 		// 19/5/10 新增要选择是转当月调休还是年度调休
 		selenium.click("id=field46113_"+x);
@@ -53,7 +49,7 @@ public class JiabanWork2 {
 		// 预计开始日期
 		selenium.click("id="+str1);
 	    driver.switchTo().frame(frame);
-	    selenium.click("//td[@onclick='day_Click(2019,7," + day + ");']");
+		selenium.click("id=dpTodayInput");			// 今天
 		driver.switchTo().parentFrame();
 		// 预计开始时间
 		selenium.click("id="+str2);
@@ -66,7 +62,7 @@ public class JiabanWork2 {
 		// 预计结束日期
 		selenium.click("id="+str3);
 	    driver.switchTo().frame(frame);
-	    selenium.click("//td[@onclick='day_Click(2019,7," + day + ");']");
+		selenium.click("id=dpTodayInput");			// 今天
 		driver.switchTo().parentFrame();
 		// 预计结束时间
 		selenium.click("id="+str4);
@@ -78,29 +74,30 @@ public class JiabanWork2 {
 		driver.switchTo().parentFrame();
 		x++;
 	}
-    
 	
 	public static void main(String[] args) throws InterruptedException {
-
+		
+		
 		String baseUrl = "https://www.katalon.com/";
 		selenium = new WebDriverBackedSelenium(driver, baseUrl);
 		driver.manage().window().maximize();			// 浏览器最大化
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS); 		// 设置等待时间 8S， 如果8s内没有找到相应的元素会报错
 		selenium.open("http://10.1.32.21:8082/login/Login.jsp?logintype=1");	// 进入OA
-		selenium.type("id=loginid", "用户名");			// 输入用户名
-		selenium.type("id=userpassword", "密码");		// 输入密码
+		selenium.type("id=loginid", "改成自己的");			// 输入用户名
+		selenium.type("id=userpassword", "改成自己的!");		// 输入密码
 		selenium.submit("id=login");						// 点击登录按钮
 		
 		//************************************* 下面进入OA主页了  ****************************************************************//
 		
 		selenium.click("id=tz");
-		selenium.click("link=HR-012-B-加班申请流程-间接员工-K-HVT");  //这里要跟实际UI上面的文字对应即可，之前开头有个(新)
+		selenium.click("//*[@id=\"wfcentercontent\"]/ul/li[1]/a");  // 用xpath定位，只要HTML结构不变化，文字修改不影响
+//		selenium.click("link=HR-012-B-加班申请流程（6等以上适用）-K-HVT");  //这里要跟实际UI上面的文字对应即可，之前开头有个(新)
 		
 		//************************************* 下面进入加班界面了  *************************************//
 		Set<String> winHandels = driver.getWindowHandles();     // 得到当前窗口的set集合
 	    List<String> it = new ArrayList<String>(winHandels);    // 将set集合存入list对象
 	    driver.switchTo().window(it.get(1));                    // 切换到弹出的新窗口
-	    Thread.sleep(5000);       								// !!!!!!!!!!!!!!!!!!! 这里一定要等待时间，具体等多久看你的网速和电脑
+	    Thread.sleep(7000);       								// !!!!!!!!!!!!!!!!!!! 这里一定要等待时间，具体等多久看你的网速和电脑
 	    selenium.selectFrame("index=2");
 
 	    // 加班事由，自行修改
@@ -109,51 +106,30 @@ public class JiabanWork2 {
 	    //************************************* 下面开始提加班了  *************************************//
 		// 提加班一条一条提，分别对应每个时段都设置循环次数，用户要修改的是对应时段的加班人数
 
-		int x78 = 1;	// 7:30 - 8:30
-		int x7 = 0;		// 18:00 - 19:00
-		int x75 = 1;	// 18:00 - 19:30
-		int x8 = 0;		// 18:00 - 20:00
-		int x85 = 0;	// 18:00 - 20:30
-		int x9 = 0;		// 18:00 - 21:00
-		int x95 = 0;	// 18:00 - 21:30
-		int x10 = 0;	// 18:00 - 22:00
-
+		int x817 = 0;	// 8:00 - 17:30
+		int x85 = 5;	// 8:30 - 17:30
+		int x821 = 0;	// 8:30 - 21:00
+		int x18 = 0;	// 18:00 - 21:00  周末白班的人
 		
 		//************************************* 以下是各个时间段的循环  *************************************//
 		
-	    JiabanWork2 jiabanWork = new JiabanWork2();
+	    JiabanWeek jiabanWork = new JiabanWeek();
 		
 		// 7:30 - 8:30
-		for(int i=0;i<x78;i++) {
-			jiabanWork.jiabantime("07", "30", "08", "30");
+		for(int i=0;i<x817;i++) {
+			jiabanWork.jiabantime("08", "0", "17", "30");
 		}
 		// 18:00 - 19:00
-		for(int i=0;i<x7;i++) {
-			jiabanWork.jiabantime("18", "0", "19", "0");
+		for(int i=0;i<x85;i++) {
+			jiabanWork.jiabantime("08", "30", "17", "30");
 		}
 		// 18:00 - 19:30
-		for(int i=0;i<x75;i++) {
-			jiabanWork.jiabantime("18", "0", "19", "30");
+		for(int i=0;i<x821;i++) {
+			jiabanWork.jiabantime("08", "30", "21", "0");
 		}
 		// 18:00 - 20:00
-		for(int i=0;i<x8;i++) {
-			jiabanWork.jiabantime("18", "0", "20", "0");
-		}
-		// 18:00 - 20:30
-		for(int i=0;i<x85;i++) {
-			jiabanWork.jiabantime("18", "0", "20", "30");
-		}
-		// 18:00 - 21:00
-		for(int i=0;i<x9;i++) {
+		for(int i=0;i<x18;i++) {
 			jiabanWork.jiabantime("18", "0", "21", "0");
-		}
-		// 18:00 - 21:30
-		for(int i=0;i<x95;i++) {
-			jiabanWork.jiabantime("18", "0", "21", "30");
-		}
-		// 18:00 - 22:00
-		for(int i=0;i<x10;i++) {
-			jiabanWork.jiabantime("18", "0", "22", "0");
-		}		
+		}	
 	}
 }

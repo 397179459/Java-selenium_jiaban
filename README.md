@@ -2,6 +2,8 @@
 ![](https://img.shields.io/badge/Fast-High%20Efficiency-success.svg)&emsp;![](https://img.shields.io/badge/author-%E7%8E%8B%20%E7%A3%8A-red.svg)&emsp;![](https://img.shields.io/github/commit-activity/y/397179459/Java-selenium_jiaban.svg)&emsp;![](https://img.shields.io/github/languages/top/397179459/Java-selenium_jiaban.svg?color=red)
 ### Change Log
 
+- 19/8/19 加班的链接，**现在是用`Xpath`定位**，取代了之前是直接定位到文字的链接，因为之前的链接总是会变化。
+
 * 19/7/26 重大突破，之前一直没找到指定日期的最优方法，**现在终于解决了如何直接指定日期**
 
   * 代码在`./src/jiaban/JiabanWork2.java`
