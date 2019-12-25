@@ -82,9 +82,10 @@ public class JiabanWeek {
 		selenium = new WebDriverBackedSelenium(driver, baseUrl);
 		driver.manage().window().maximize();			// 浏览器最大化
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS); 		// 设置等待时间 8S， 如果8s内没有找到相应的元素会报错
-		selenium.open("http://10.1.32.21:8082/login/Login.jsp?logintype=1");	// 进入OA
-		selenium.type("id=loginid", "改成自己的");			// 输入用户名
-		selenium.type("id=userpassword", "改成自己的!");		// 输入密码
+//		selenium.open("http://10.1.32.21:8082/login/Login.jsp?logintype=1");	// 进入OA
+        selenium.open("http://60.10.65.80:8082/login/Login.jsp?logintype=1");
+		selenium.type("id=loginid", "wanglei03");			// 输入用户名
+		selenium.type("id=userpassword", "wangLEI@");		// 输入密码
 		selenium.submit("id=login");						// 点击登录按钮
 		
 		//************************************* 下面进入OA主页了  ****************************************************************//
@@ -101,13 +102,13 @@ public class JiabanWeek {
 	    selenium.selectFrame("index=2");
 
 	    // 加班事由，自行修改
-		selenium.type("id=field46107", "查看资料");
+		selenium.type("id=field46107", "整理资料，写报告");
 		
 	    //************************************* 下面开始提加班了  *************************************//
 		// 提加班一条一条提，分别对应每个时段都设置循环次数，用户要修改的是对应时段的加班人数
 
 		int x817 = 0;	// 8:00 - 17:30
-		int x85 = 5;	// 8:30 - 17:30
+		int x85 = 8;	// 8:30 - 17:30
 		int x821 = 0;	// 8:30 - 21:00
 		int x18 = 0;	// 18:00 - 21:00  周末白班的人
 		

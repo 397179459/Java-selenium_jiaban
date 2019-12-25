@@ -33,8 +33,8 @@ public class JiabanWork2 {
     
     public void jiabantime(String starthour,String startmin,String endhour,String endmin) {
 
-    	String month = "8";
-    	String day = "16";   //提指定日期的加班就在这个地方改日期，一般都是提当月的加班，所以只对日期做了选择
+    	String month = "10";
+    	String day = "9";   //提指定日期的加班就在这个地方改日期，一般都是提当月的加班，所以只对日期做了选择
     	
     	String str0 = String.format("field46112_%sbrowser", x);		// 归属日期
 		String str1 = String.format("field46125_%sbrowser", x);		// 预计开始日期
@@ -87,9 +87,9 @@ public class JiabanWork2 {
 		selenium = new WebDriverBackedSelenium(driver, baseUrl);
 		driver.manage().window().maximize();			// 浏览器最大化
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS); 		// 设置等待时间 8S， 如果8s内没有找到相应的元素会报错
-		selenium.open("http://10.1.32.21:8082/login/Login.jsp?logintype=1");	// 进入OA
-		selenium.type("id=loginid", "改成自己的");			// 输入用户名
-		selenium.type("id=userpassword", "改成自己的!");		// 输入密码
+		selenium.open("http://60.10.65.80:8082/login/Login.jsp?logintype=1");	// 进入OA
+		selenium.type("id=loginid", "wanglei03");			// 输入用户名
+		selenium.type("id=userpassword", "wangLEI@");		// 输入密码
 		selenium.submit("id=login");						// 点击登录按钮
 		
 		//************************************* 下面进入OA主页了  ****************************************************************//
@@ -102,18 +102,18 @@ public class JiabanWork2 {
 		Set<String> winHandels = driver.getWindowHandles();     // 得到当前窗口的set集合
 	    List<String> it = new ArrayList<String>(winHandels);    // 将set集合存入list对象
 	    driver.switchTo().window(it.get(1));                    // 切换到弹出的新窗口
-	    Thread.sleep(5000);       								// !!!!!!!!!!!!!!!!!!! 这里一定要等待时间，具体等多久看你的网速和电脑
+	    Thread.sleep(6000);       								// !!!!!!!!!!!!!!!!!!! 这里一定要等待时间，具体等多久看你的网速和电脑
 	    selenium.selectFrame("index=2");
 
 	    // 加班事由，自行修改
-		selenium.type("id=field46107", "查看资料，工艺中心培训");
+		selenium.type("id=field46107", "环安安全培训");
 		
 	    //************************************* 下面开始提加班了  *************************************//
 		// 提加班一条一条提，分别对应每个时段都设置循环次数，用户要修改的是对应时段的加班人数
 
 		int x78 = 0;	// 7:30 - 8:30
 		int x7 = 0;		// 18:00 - 19:00
-		int x75 = 3;	// 18:00 - 19:30
+		int x75 = 4;	// 18:00 - 19:30
 		int x8 = 0;		// 18:00 - 20:00
 		int x85 = 0;	// 18:00 - 20:30
 		int x9 = 0;		// 18:00 - 21:00
